@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="familytree.js"></script>
+</head>
+<body>
+    <div style="width:100%; height:700px;" id="tree"></div>
+    <script>
+        let family = new FamilyTree(document.getElementById("tree"), {
+            mode: "dark",
+            nodeTreeMenu: true,
+            nodeBinding: {
+                field_0: "name"
+            },
+            nodes: [
+                { id: 1, pids: [2], name: "Amber McKenzie", gender: "female" },
+                { id: 2, pids: [1], name: "Ava Field", gender: "male" },
+                { id: 3, mid: 1, fid: 2, name: "Peter Stevens", gender: "male" }  
+            ]
+        });
+
+        fetch("data.json")
+            .then(response => response.json())
+            .then(json => console.log(json));
+    </script> 
+</body>
+</html>
